@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <style><%@include file="/css/styles.css"%></style>
 </head>
 <body>
 <div class="form-style-2">
