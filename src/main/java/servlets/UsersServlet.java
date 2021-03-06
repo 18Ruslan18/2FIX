@@ -27,10 +27,11 @@ public class UsersServlet extends HttpServlet {
             connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         } catch (IOException  e) {
             throw new IllegalStateException(e);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
