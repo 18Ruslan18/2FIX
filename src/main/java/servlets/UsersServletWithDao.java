@@ -2,6 +2,7 @@ package servlets;
 
 import dao.UserDaoJdbcImpl;
 import dao.UsersDao;
+import dao.UsersDaoJdbcTempkateImpl;
 import moodels.User;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -38,7 +39,7 @@ public class UsersServletWithDao extends HttpServlet {
         dataSource.setPassword(dbPassword);
         dataSource.setUrl(dbUrl);
         dataSource.setDriverClassName(driverClassName);
-        usersDao = new UserDaoJdbcImpl( dataSource);
+        usersDao = new UsersDaoJdbcTempkateImpl( dataSource);
     }
 
     @Override
