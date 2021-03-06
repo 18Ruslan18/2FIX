@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 @WebServlet("/users")
@@ -39,5 +37,26 @@ public class UsersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getServletContext().getRequestDispatcher("/jsp/addUser.jsp").forward(req,resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String firstname= req.getParameter("first-name");
+        String lastname = req.getParameter("last-name");
+        try {
+            ///Statement statement = connection.createStatement();
+           /// String sqlInsert = "INSERT INTO fix_user (firstName, lastName) " +
+                   /// "VALUES('" + firstname + "','" + lastname + "');";
+           /// statement.execute(sqlInsert);
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("INSERT INTO " +
+                            "fix_user(firstName, lastName) VALUES (?, ?)");
+            preparedStatement.setString(1, firstname);
+            preparedStatement.setString(2, lastname);
+            preparedStatement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        doGet(req,resp);
     }
 }
