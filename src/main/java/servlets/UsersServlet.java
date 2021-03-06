@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
-@WebServlet("/users")
+//@WebServlet("/users")
 public class UsersServlet extends HttpServlet {
     private Connection connection;
     @Override
