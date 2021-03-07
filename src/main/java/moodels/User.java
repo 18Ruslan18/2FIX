@@ -1,9 +1,26 @@
 package moodels;
 
+import java.util.List;
+
 public class User {
     private Integer id;
     private String  firstName;
     private  String lastName;
+    private List<car> cars;
+    public User(Integer id, String firstName, String lastName, List<car> cars) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cars = cars;
+    }
+
+    public List<car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<car> cars) {
+        this.cars = cars;
+    }
 
     public User(String firstName, String lastName) {
         this.firstName = firstName;

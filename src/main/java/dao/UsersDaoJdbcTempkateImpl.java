@@ -18,9 +18,15 @@ public class UsersDaoJdbcTempkateImpl implements UsersDao {
     //language=SQL
     private final String SQL_SELECT_ALL =
             "SELECT * FROM fix_user";
+    //language=SQL
+    private final String SQL_SELECT_BY_FIRSTNAME =
+            "SELECT * FROM fix_user WHERE firstName = ?";
+    //language=SQL
+    private final String SQL_USERS_CARS =
+            "select * from fix_user left join fix_car on fix_user.id=fix_car.owner_id where fix_user.id=?";
     @Override
     public List<User> findAllByFirstName(String firstName) {
-        return null;
+        return template.query(SQL_SELECT_BY_FIRSTNAME,userRowMapper,firstName);
     }
 
     @Override
